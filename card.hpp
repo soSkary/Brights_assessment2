@@ -18,7 +18,7 @@ struct playing_card
     uint16_t value;
 };
 
-std::ostream& operator<<(std::ostream& out, const playing_card& card)
+inline std::ostream& operator<<(std::ostream& out, const playing_card& card)
 {
     switch (card.suit)
     {
@@ -38,7 +38,7 @@ std::ostream& operator<<(std::ostream& out, const playing_card& card)
     return out;
 }
 
-suits& operator++(suits& suit)
+inline suits& operator++(suits& suit)
 {
     switch (suit)
     {

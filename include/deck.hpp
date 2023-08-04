@@ -27,10 +27,10 @@ public:
     deck() = default;
     deck(size_type sz) : card_container(sz) {}
     deck(const deck& other) = default;
-    deck(deck&& other) = delete;    //move constructor not needed for deck
+    deck(deck&& other) = default;
 
     deck& operator=(const deck& other) = default;
-    deck& operator=(deck&& other) = delete; //move assignment not needed for deck
+    deck& operator=(deck&& other) = default;
 
     ~deck() = default;
 
@@ -51,6 +51,7 @@ public:
     value_type  draw();
     reference   top()               { return card_container.back(); }
     reference   bottom()            { return card_container.front(); }
+    void        insert_card_on_top(const_reference card);
 
 private:
     std::vector<T> card_container;
@@ -90,6 +91,12 @@ deck<T>::value_type deck<T>::draw()
     value_type return_value{ card_container.back() };
     card_container.pop_back();
     return return_value;
+}
+
+template <typename T>
+void deck<T>::insert_card_on_top(const_reference card)
+{
+    card_container.push_back(card);
 }
 
 template <typename T>

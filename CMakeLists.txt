@@ -17,7 +17,8 @@ endif()
 
 add_compile_options(-Wall -Wextra -Wpedantic)
 
-add_executable(${exec_name} main.cpp)
+add_executable(${exec_name} main.cpp game_logic.cpp)
 target_include_directories(${exec_name} PUBLIC ${CMAKE_SOURCE_DIR}/include)
+
 
 #add_subdirectory(tests)
